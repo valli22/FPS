@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour {
 
+	[SerializeField]
+	float timeDeath = 3;
+
 	int lvl = 0;
 
 	[SerializeField]
@@ -24,6 +27,9 @@ public class LevelManager : MonoBehaviour {
 
 	[SerializeField]
 	GameObject initialText;
+
+	[SerializeField]
+	LavaTrap lavaTrapScript;
 
 	float timeToDeleteInitialText = 3;
 
@@ -50,7 +56,24 @@ public class LevelManager : MonoBehaviour {
 		checkPoint = checkPointIn;
 	}
 
-	public void Respawn(GameObject camera){
+	public void Respawn(GameObject player){
+		GameObject deathcamara = player.transform.Find ("FirstPersonCharacter").Find("DeathCamera").gameObject;
+		deathcamara.transform.parent = null;
+
+		deathcamara.SetActive (true);
+		Destroy (player);
+		StartCoroutine (TimeDeath(deathcamara));
+	}
+
+	public void PickUpTaken(){
+		pickUps--;
+	}
+
+	void DeleteInitialText(){
+		initialText.SetActive (false);
+	}
+
+	void RespawnReal(GameObject camera){
 		Vector3 position;
 		if (checkPoint == null) {
 			position = firstPosition;
@@ -61,12 +84,13 @@ public class LevelManager : MonoBehaviour {
 		Destroy (camera);
 	}
 
-	public void PickUpTaken(){
-		pickUps--;
+	IEnumerator TimeDeath(GameObject deathcamera){
+		yield return new WaitForSeconds(timeDeath);
+		RespawnReal (deathcamera);
 	}
 
-	void DeleteInitialText(){
-		initialText.SetActive (false);
+	public void CancelInvokes(){
+		lavaTrapScript.CancelInvoke ();
 	}
 
 

@@ -22,17 +22,21 @@ public class Death : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other){
 		if (other.tag == "Player") {
-			GameObject deathcamara = other.gameObject.transform.GetChild (0).GetChild (2).gameObject;
+			/*GameObject deathcamara = other.gameObject.transform.GetChild (0).GetChild (2).gameObject;
 			deathcamara.transform.parent = null;
 
 			deathcamara.SetActive (true);
 			Destroy (other.gameObject);
-			StartCoroutine (TimeDeath(deathcamara));
+			lvlManager.GetComponent<LevelManager> ().Respawn (deathcamara);
+			*/
+			lvlManager.GetComponent<LevelManager> ().Respawn (other.gameObject);
+			//StartCoroutine (TimeDeath(deathcamara));
 		}
 	}
 
+	/*
 	IEnumerator TimeDeath(GameObject deathcamera){
 		yield return new WaitForSeconds(timeDeath);
 		lvlManager.GetComponent<LevelManager> ().Respawn (deathcamera);
-	}
+	}*/
 }

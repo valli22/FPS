@@ -31,6 +31,7 @@ public class ShootRaycast : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		GetComponent<AudioSource> ().enabled = PlayerPrefs.GetInt ("sound") == 1;
 		ammoCount = maxAmmo;
 		timeToShoot = 0;
 	}

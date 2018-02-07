@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 54402902214271064}
   - component: {fileID: 82846656706883232}
   - component: {fileID: 114461107459095048}
+  - component: {fileID: 114717663162365112}
   m_Layer: 2
   m_Name: PlayerRayCast
   m_TagString: Player
@@ -721,10 +722,26 @@ MonoBehaviour:
   fireDelay: 0.3
   gunDistance: 50
   hitForce: 100
+  actionDistance: 10
   lineRenderer: {fileID: 120391692885516520}
   maxAmmo: 20
   shootMark: {fileID: 1857465073109966, guid: 1d632c4be1eadf743abc3ebe5b6256d8, type: 2}
   timeToDestroyShotMark: 5
+--- !u!114 &114717663162365112
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1032903902724222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7413f7115180b7a40b16d19dda5df321, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  life: 100
+  timeDeath: 3
+  hudManagerScript: {fileID: 0}
+  lvlManager: {fileID: 0}
 --- !u!114 &114898990401701144
 MonoBehaviour:
   m_ObjectHideFlags: 1

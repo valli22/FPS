@@ -21,5 +21,6 @@ public class CreateSceneAndDestroy : MonoBehaviour, Iinteractive {
 	public void Action (){
 		anim.SetTrigger ("OpenDoor2");
 		SceneManager.LoadSceneAsync ("ObjectMainScene",LoadSceneMode.Additive);
+		Destroy (this);
 	}
 }
